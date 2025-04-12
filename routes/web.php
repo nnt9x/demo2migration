@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 Route::get('/offices', [\App\Http\Controllers\OfficeController::class, 'index']);
 
+Route::put('/offices', [\App\Http\Controllers\OfficeController::class, 'edit']);
+
 Route::get('/offices/create', [\App\Http\Controllers\OfficeController::class, 'create'])->name('office-create');
 
 Route::post('/offices/create', [\App\Http\Controllers\OfficeController::class, 'save']);

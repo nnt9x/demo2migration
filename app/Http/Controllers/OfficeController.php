@@ -54,6 +54,21 @@ class OfficeController extends Controller
         $office = Office::query()->findOrFail($id);
         $office->delete();
         # Chuyen huong ve index
+        flash()->success('Xoá thành công!');
+        return redirect('/offices');
+    }
+
+    public function edit(Request $request)
+    {
+        $id = $request->get('officeId');
+        $office = Office::query()->findOrFail($id);
+        $office->update([
+            'name' => $request->get('officeName'),
+            'address' => $request->get('officeAddress'),
+            'description' => $request->get('officeDescription')
+        ]);
+        flash()->success('Cập nhật thành công!');
+        // Chuyen huong ve trang office
         return redirect('/offices');
     }
 }
